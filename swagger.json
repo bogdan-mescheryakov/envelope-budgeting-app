@@ -1,0 +1,444 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "budgetingApp",
+    "description": "API for envelope-budgeting system",
+    "version": "1.0-oas3"
+  },
+  "servers": [
+    {
+      "url": "localhost:3000"
+    }
+  ],
+  "paths": {
+    "/envelopes": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Model1"
+              }
+            }
+          },
+          "x-examples": {
+            "application/json": "{\"envelopeName\":\"Food\", \"monthLimit\":50,\"currentMoney\":20,\"isEmpty\":false,\"iconUrl\":\"urlurl\",\"partOfBalance\":55.5}"
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Add new envelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Model6"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Get all envelopes or transactions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Model3"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/envelopes/{id}": {
+      "put": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Example values form path are: '1' and '12'",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Model1"
+              }
+            }
+          },
+          "x-examples": {
+            "application/json": "{\"envelopeName\":\"Food\", \"monthLimit\":50,\"currentMoney\":20,\"isEmpty\":false,\"iconUrl\":\"urlurl\",\"partOfBalance\":55.5}"
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Modify an envelope by Id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Model7"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Example values form path are: '1' and '12'",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete an envelope by Id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Model8"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Example values form path are: '1' and '12'",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get individual envelope",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Model4"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Model2"
+              }
+            }
+          },
+          "x-examples": {
+            "application/json": "{\"envelopeId\":8,\"paymentAmount\":400}"
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Add new transaction for one of existing envelopes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Model9"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Get all transactions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Model4"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{id}": {
+      "put": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Example values form path are: '1' and '12'",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Model2"
+              }
+            }
+          },
+          "x-examples": {
+            "application/json": "{\"envelopeId\":8,\"paymentAmount\":500}"
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Modify a transaction by Id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Model10"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Example values form path are: '1' and '12'",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete transaction by Id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Model11"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Example values form path are: '1' and '12'",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get individual transaction",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Model5"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Model1": {
+        "properties": {
+          "envelopeName": {
+            "type": "string"
+          },
+          "monthLimit": {
+            "type": "number",
+            "format": "double"
+          },
+          "currentMoney": {
+            "type": "number",
+            "format": "double"
+          },
+          "isEmpty": {
+            "type": "boolean"
+          },
+          "iconUrl": {
+            "type": "string"
+          },
+          "partOfBalance": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "Model2": {
+        "properties": {
+          "envelopeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paymentAmount": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "Model3": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Array1"
+        }
+      },
+      "Model4": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Array1"
+        }
+      },
+      "Model5": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Array2"
+        }
+      },
+      "Model6": {
+        "properties": {
+          "Envelope added with ID": {
+            "type": "string"
+          }
+        }
+      },
+      "Model7": {
+        "properties": {
+          "Envelope modified with ID": {
+            "type": "string"
+          }
+        }
+      },
+      "Model8": {
+        "properties": {
+          "Envelope deleted with ID": {
+            "type": "string"
+          }
+        }
+      },
+      "Model9": {
+        "properties": {
+          "Transaction added with ID": {
+            "type": "string"
+          }
+        }
+      },
+      "Model10": {
+        "properties": {
+          "Transaction modified with ID": {
+            "type": "string"
+          }
+        }
+      },
+      "Model11": {
+        "properties": {
+          "Transaction deleted with ID": {
+            "type": "string"
+          }
+        }
+      },
+      "Array1": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "envelope_name": {
+            "type": "string"
+          },
+          "month_limit": {
+            "type": "number",
+            "format": "double"
+          },
+          "current_money": {
+            "type": "number",
+            "format": "double"
+          },
+          "is_empty": {
+            "type": "boolean"
+          },
+          "icon_url": {
+            "type": "string"
+          },
+          "part_of_balance": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "Array2": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "envelope_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "date": {
+            "type": "string"
+          },
+          "payment_amount": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      }
+    }
+  }
+}
