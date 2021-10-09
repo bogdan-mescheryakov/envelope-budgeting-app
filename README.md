@@ -8,7 +8,7 @@ envelope-budgeting app backend(Node, Express, PostgreSQL, Sequelize, Passport.js
 
 ## General info
   This is a REST API for web app, which organize your budget using envelope principles. 
-  Currently in development and testing.
+  Currently in development and testing. Working on __test__ folder...
 	
 ## Technologies
 Project is created with:
