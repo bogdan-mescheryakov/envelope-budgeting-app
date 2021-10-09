@@ -17,7 +17,7 @@ Project is created with:
 * passport: 0.4.1,
 * sequelize 6.6.5,
 * swagger-ui-express: 4.1.6
-* jest: 
+* jest: 27.2
 	
 ## Setup
 To run this project, install it locally using npm and change .env file name:
