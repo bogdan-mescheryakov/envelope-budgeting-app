@@ -1,17 +1,6 @@
-//const envelopes = require('../routers/envelopes');
 const db = require('../models/index')
-let request = require('supertest');
-
-//const express = require('express');
 const app = require('../app')
-//const json = require('express').json;
-/*const app = express();
-const http = require('http').createServer(app).listen(3000);
-
-app.use(json());
-app.use(express.urlencoded({ extended: false }))
-app.use('/envelopes', envelopes);
-app.use('envelopes/1', envelopes);*/
+let request = require('supertest');
 
 jest.setTimeout(30000);
 
@@ -44,7 +33,7 @@ describe('GET/envelopes', () => {
     describe('GET/envelopes/:id', () => {
         afterAll(() => {
             db.sequelize.close()
-            //http.close()
+
         });
         it('respondes with a json object', done => {
             request(app)
