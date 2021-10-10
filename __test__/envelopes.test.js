@@ -31,10 +31,9 @@ describe('GET/envelopes', () => {
         });
     });
     describe('GET/envelopes/:id', () => {
-        afterAll(() => {
+        /*afterAll(() => {
             db.sequelize.close()
-
-        });
+        });*/
         it('respondes with a json object', done => {
             request(app)
                 .get('/envelopes/1')
